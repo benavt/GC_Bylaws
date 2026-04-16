@@ -1,0 +1,162 @@
+% =============================================
+% MAIN BYLAWS DOCUMENT
+% Compile with: lualatex --shell-escape main.tex
+% (Run twice for the table of contents)
+% Laypersons should ONLY edit content.tex
+% =============================================
+
+\documentclass[11pt]{article}
+
+\usepackage[letterpaper,top=0.9in,bottom=0.9in,left=0.95in,right=0.95in]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{footmisc}
+
+\definecolor{UnionBlack}{HTML}{000000}
+\definecolor{UnionWhite}{HTML}{FFFFFF}
+\definecolor{UnionRed}{HTML}{D6001C}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[
+  Path=../Font_Assets/,
+  Extension=.otf,
+  UprightFont=RPIGeist-Regular,
+  ItalicFont=RPIGeist-RegularItalic,
+  BoldFont=RPIGeist-Bold,
+  BoldItalicFont=RPIGeist-BoldItalic,
+]{RPIGeist-Regular}
+
+\color{UnionBlack}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=UnionRed,
+  urlcolor=UnionRed,
+  citecolor=UnionRed,
+  pdfborder={0 0 0},
+  pdftitle={The Bylaws of the Rensselaer Union Graduate Council},
+}
+
+\svgpath{{../../Union_Docs/Subtitled_Logos/Rensselaer_Union_Icon_Subtitled_Logos/}}
+
+\renewcommand{\contentsname}{Contents}
+\setcounter{tocdepth}{1}
+\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14pt}{16pt}\selectfont\bfseries\color{UnionBlack}}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftsecfont}{\color{UnionBlack}}
+\renewcommand{\cftsecpagefont}{\color{UnionBlack}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{0.25em}
+
+\newcommand{\GCBodyFont}{\fontsize{10.5pt}{13.6pt}\selectfont}
+\newcommand{\GCClauseGap}{0.55em}
+\newcommand{\SSClauseGap}{\GCClauseGap}
+\newcommand{\GCLogoWidth}{3.15in}
+\newcommand{\GCTitle}{The Bylaws of the Rensselaer Union Graduate Council}
+\newcommand{\GCSubtitleOne}{Approved by the Graduate Council as of April 10, 2026}
+\newcommand{\GCSubtitleTwo}{Approved by the 57th Student Senate as of April 14, 2026}
+\newcommand{\GCContactFooter}{%
+  \begin{center}
+{\fontsize{9pt}{11pt}\selectfont\itshape
+  For questions about the Bylaws of the Graduate Student Council, please email us at grad-council@rpi.edu.}
+  \end{center}
+}
+
+% Easy command for laypersons: creates a superscript number + footnote
+\newcommand{\SSFootnote}[2]{%
+  \footnote{#2}%
+}
+
+\newcommand{\GCArticle}[2]{%
+  \par\vspace{1.45em}%
+  \phantomsection\hypertarget{#1}{}%
+  \addcontentsline{toc}{section}{#2}%
+  \begin{center}
+    {\fontsize{16.5pt}{19.8pt}\selectfont\bfseries\color{UnionRed} #2\par}
+  \end{center}%
+  \vspace{0.25em}%
+}
+
+\newcommand{\GCClause}[4]{%
+  \par\noindent
+  \hspace*{#1}%
+  \makebox[#2][r]{#3}\hspace{0.35em}%
+  \parbox[t]{\dimexpr\linewidth-#1-#2-0.35em\relax}{\GCBodyFont\justifying #4}%
+  \par\vspace{\GCClauseGap}%
+}
+
+\newcommand{\GCParagraph}[1]{%
+  \par\noindent{\GCBodyFont\justifying #1}\par\vspace{\GCClauseGap}%
+}
+
+% ======================
+% Enumitem configuration for bylaws-style nested lists
+% ======================
+\setlist[enumerate,1]{label=\arabic*., leftmargin=*, itemsep=\SSClauseGap, parsep=0pt}
+\setlist[enumerate,2]{label=\alph*., leftmargin=*, itemsep=\SSClauseGap, parsep=0pt}
+\setlist[enumerate,3]{label=\roman*.,  leftmargin=*, itemsep=\SSClauseGap, parsep=0pt}
+\setlist[enumerate,4]{label=\arabic*)\,, leftmargin=*, itemsep=\SSClauseGap, parsep=0pt}
+
+\setlistdepth{9}
+
+\begin{document}
+\thispagestyle{empty}
+\GCBodyFont
+
+\begin{center}
+  \includesvg[width=\GCLogoWidth]{union_graduate_council_bw}
+\end{center}
+\vspace{0.35cm}
+
+\begin{center}
+  {\fontsize{18pt}{21.6pt}\selectfont\bfseries\color{UnionBlack} \GCTitle\par}
+\end{center}
+\vspace{0.18cm}
+
+\begin{center}
+  {\fontsize{11pt}{13.2pt}\selectfont\color{UnionBlack} \GCSubtitleOne\par}
+\end{center}
+\begin{center}
+  {\fontsize{11pt}{13.2pt}\selectfont\color{UnionBlack} \GCSubtitleTwo\par}
+\end{center}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+  colback=UnionWhite,
+  colframe=UnionRed,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=4mm,
+  right=4mm,
+  top=3mm,
+  bottom=3mm,
+]
+  \tableofcontents
+\end{tcolorbox}
+
+\vspace*{\fill}
+\GCContactFooter
+\clearpage
+
+% ======================
+% Insert the content (only this file needs to be edited by most users)
+% ======================
+\input{content.tex}
+
+\end{document}
