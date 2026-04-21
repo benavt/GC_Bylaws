@@ -1,46 +1,67 @@
 # GC Bylaws
 
-This repository stores the Graduate Council bylaws source for the
-`2025-02-19` approved revision.
+This repository contains the Graduate Council bylaws source for the
+`2026-04-21` branch revision.
 
-The primary LaTeX source is `GC_Bylaws.tex`, which compiles to `GC_Bylaws.pdf`.
-The document now uses the shared `union-doc.cls` class and branding assets from
-the nested `union-docs-latex-class` git submodule.
+The canonical LaTeX source is [`GC_Bylaws.tex`](GC_Bylaws.tex).
+It compiles to `GC_Bylaws.pdf` and uses the shared `union-doc.cls` document
+class from the nested `union-docs-latex-class` submodule.
 
 ## Repository Layout
 
 - `GC_Bylaws.tex`: the single source file for the bylaws on this branch
-- `GC_24-25_BL_Amd_1_2025-02-19.pdf`: the amendment motion that introduced
-  this Feb. 19, 2025 bylaws revision
-- `.github/workflows/compile-latex.yml`: CI workflow that builds the PDF and
-  uploads the artifact
-- `union-docs-latex-class/`: submodule containing the shared class, fonts, and
-  official Union logos
+- `.github/workflows/compile-latex.yml`: GitHub Actions workflow that compiles
+  the document and uploads the PDF artifact
+- `union-docs-latex-class/`: git submodule containing the shared LaTeX class,
+  fonts, and official Union logos
 
 ## Getting Started
 
-After cloning, initialize the submodule:
+After cloning the repo, initialize the submodule:
 
 ```bash
 git submodule update --init --recursive
 ```
 
-To build locally:
+To build the PDF locally:
 
 ```bash
 latexmk -lualatex -shell-escape GC_Bylaws.tex
 ```
 
-Run the document twice if you are invoking `lualatex` directly so the table of
+Run the build twice if you are using `lualatex` directly so the table of
 contents is fully populated.
 
-For editing guidance, look at the example document in the submodule at
-`union-docs-latex-class/demo/v1/demo.tex`. It shows the expected `union-doc`
-class structure and the document commands used to format Union documents.
+## Git conventions for Union documents
 
-## Notes
+When you commit changes to a Union governing document, write the commit message
+so someone reviewing the history can immediately tell **what changed** and
+**which final approval date the text corresponds to**.
 
-- This repo uses LuaLaTeX.
-- Shell escape is required during compilation.
-- The old top-level `Font_Assets` directory is no longer used on this branch;
-  fonts come from the `union-docs-latex-class` submodule.
+### Recommended commit format
+
+Use this pattern:
+
+```text
+<document name>: <short description> (final approval: YYYY-MM-DD)
+```
+
+Examples:
+
+- `Senate Bylaws: update election procedure language (final approval: 2026-04-21)`
+- `Union Constitution: incorporate approved amendment 3 (final approval: 2026-02-06)`
+- `Executive Board Rules: fix numbering and adopted wording (final approval: 2025-11-14)`
+
+Conventions to follow:
+
+- Use the **final approval date**, not the date you happened to make the edit.
+- Write the date in **ISO format**: `YYYY-MM-DD`.
+- Keep the subject line focused on the approved change itself, not on your
+  editing process. For example, prefer `incorporate approved budget language`
+  over `make edits from meeting`.
+- If a change has **not** received final approval yet, make that explicit in
+  the commit message instead of guessing a date. For example:
+  `Senate Bylaws: draft revisions for review (pending final approval)`.
+
+This convention makes it much easier to audit the repository later against
+minutes, ratification records, and released PDFs.
