@@ -1,15 +1,42 @@
 % =============================================
-% BYLAWS CONTENT FILE
-% Edit ONLY this file for content changes.
-% Use normal LaTeX enumerate environments for all numbered/lettered lists.
-% The formatting is handled automatically in main.tex
+% GC_Bylaws.tex
+% Compile with: lualatex --shell-escape GC_Bylaws.tex
+% Run twice for the table of contents.
 % =============================================
 
-\GCArticle{gc-article-1}{I. Preamble}
+\def\docFontPath{./union-docs-latex-class/Font_Assets/}
+\def\docLogoPath{./union-docs-latex-class/Commonly_Used_Logos/}
+\def\docSubtitledLogoPath{./union-docs-latex-class/Subtitled_Logos/}
+\makeatletter
+\def\input@path{{union-docs-latex-class/}}
+\makeatother
+\documentclass{union-doc}
 
-\GCParagraph{These Bylaws supersede all previous Bylaws of the Graduate Student Council, effective upon adoption of the Graduate Student Council.}
+\renewcommand{\docPdfTitle}{The Bylaws of the Rensselaer Union Graduate Council}
+\renewcommand{\docTitle}{The Bylaws of the Rensselaer Union Graduate Council}
+\renewcommand{\docSubtitle}{Approved by the Graduate Council as of April 16, 2026}
+\renewcommand{\docCoverNote}{Approved by the 57th Student Senate as of April 21, 2026}
+\renewcommand{\docTocDepth}{1}
+\renewcommand{\docLogoWidth}{3.15in}
+\renewcommand{\docCoverLogo}{%
+  \includegraphics[width=\docLogoWidth]{Rensselaer_Union_Icon_Subtitled_Logos/union_graduate_council_bw.png}%
+}
+\renewcommand{\docTocFooter}{%
+  \begin{center}
+    {\fontsize{9pt}{11pt}\selectfont\itshape
+    For questions about the Bylaws of the Graduate Student Council, please email us at grad-council@rpi.edu.}
+  \end{center}%
+}
 
-\GCArticle{gc-article-2}{II. Purpose}
+\begin{document}
+
+\MakeUnionDocFrontMatter
+
+\DocArticle{gc-article-1}{I. Preamble}
+
+\DocParagraph{These Bylaws supersede all previous Bylaws of the Graduate Student Council, effective upon adoption of the Graduate Student Council.}
+
+\DocArticle{gc-article-2}{II. Purpose}
 
 \begin{enumerate}
 \item The Graduate Student Council (hereafter, the Council) is the elected representative body of the Graduate Students and the graduate legislative branch of the Rensselaer Union.
@@ -18,14 +45,14 @@
 \item The Council shall ensure adequate representation to other governing bodies by appointing members to other committees as prescribed by the Rensselaer Union Constitution.
 \end{enumerate}
 
-\GCArticle{gc-article-3}{III. Eligibility}
+\DocArticle{gc-article-3}{III. Eligibility}
 
 \begin{enumerate}
 \item Students who are enrolled in the Graduate School and who are pursuing a graduate degree at Rensselaer shall be eligible to run for and hold office on the Graduate Student Council. Students who do not meet these requirements at any time shall not be considered to be on the Council and their office shall be considered vacant.
 \item Appointments made by the Graduate Student Council shall be subject to the same eligibility requirements.
 \end{enumerate}
 
-\GCArticle{gc-article-4}{IV. Membership}
+\DocArticle{gc-article-4}{IV. Membership}
 
 \begin{enumerate}
 \item Only students meeting the above eligibility requirements in Article III may run for and hold office on the Graduate Student Council.
@@ -60,15 +87,15 @@
     \item The different independent graduate organizations, operating in Rensselaer, from time to time (viz.\ Grad SWE, Students with Families and others).
     \item The different Union-recognized graduate bodies, active in the Rensselaer Union, from time to time (viz.\ BGSA, Bangladeshi Students Association and others).
     \end{enumerate}
-  \GCParagraph{Further, such non-voting representation, as given by Article IV.3.d above, shall not be ex-officio and shall require a formal written request from the president of the respective graduate body or organization to the President of the Graduate Student Council. All such requests shall be automatically approved and the Graduate Student Council shall not have any discretionary authority to deny them under any pretext.}
+  \DocParagraph{Further, such non-voting representation, as given by Article IV.3.d above, shall not be ex-officio and shall require a formal written request from the president of the respective graduate body or organization to the President of the Graduate Student Council. All such requests shall be automatically approved and the Graduate Student Council shall not have any discretionary authority to deny them under any pretext.}
   \item The immediately outgoing (lame-duck) President of the Graduate Student Council shall serve as a non-voting, ex-officio member of the Council, for the duration of the incumbent term, following their completion of office.
   \item The Graduate Council may, by a simple majority vote, engage the services of any former President(s) or Officer(s) of the Council, to serve in a strictly non-voting and advisory capacity, for specific projects of limited duration. Such engagements shall be limited to situations where the Council determines that the former Presidents' or Officers' experience and expertise would be beneficial and the same shall be documented.
 
-  \GCParagraph{\textit{Note 1.} Such non-voting positions of the Graduate Student Council, as described in Article IV.3.e and IV.3.f above, shall not be considered as violations to the Eligibility requirements, as given in Article III, earlier.}
+  \DocParagraph{\textit{Note 1.} Such non-voting positions of the Graduate Student Council, as described in Article IV.3.e and IV.3.f above, shall not be considered as violations to the Eligibility requirements, as given in Article III, earlier.}
   \end{enumerate}
 \end{enumerate}
 
-\GCArticle{gc-article-5}{V. Elections and Terms of Office}
+\DocArticle{gc-article-5}{V. Elections and Terms of Office}
 
 \begin{enumerate}
 \item Council elections shall be held during Grand Marshal Week and shall be run by the Student Senate.
@@ -92,7 +119,7 @@
 \item In the event of the death of a Council member before the natural end of their term of office, said office shall be held open out of respect for one month.
 \end{enumerate}
 
-\GCArticle{gc-article-6}{VI. Officers}
+\DocArticle{gc-article-6}{VI. Officers}
 
 \begin{enumerate}
 \item As soon as practical, following the annual elections, the newly elected Graduate Student Council shall meet to elect from its voting membership a Vice President, a Treasurer and a Secretary, whose duties shall include, but are not limited to, those outlined below.
@@ -124,13 +151,13 @@
   \item be responsible for advertising meetings and events of the Council.
   \end{enumerate}
 \end{enumerate}
-In the case of the President being an open position, the election process will follow the same procedure as the other officers. The Previous Graduate Council President will run this meeting until a New Graduate Council President has been elected.
 
-\vspace{1em}
+\DocParagraph{The election process for the President follows the same procedure as the other officers when that position is vacant. The previous Graduate Council President runs this meeting until a new Graduate Council President has been elected.}
 
-\noindent The responsibilities of the newly elected President are outlined below.
+\DocParagraph{The responsibilities of the newly elected President are outlined below.}
+
 \begin{enumerate}
-  \item The President shall:
+\item The President shall:
   \begin{enumerate}
   \item be one of the officers of the Rensselaer Union;
   \item act as primary spokesperson for the Council;
@@ -141,7 +168,7 @@ In the case of the President being an open position, the election process will f
   \end{enumerate}
 \end{enumerate}
 
-\GCArticle{gc-article-7}{VII. Meetings}
+\DocArticle{gc-article-7}{VII. Meetings}
 
 \begin{enumerate}
 \item Meetings shall be held at least once per month during normal academic periods.
@@ -161,7 +188,7 @@ In the case of the President being an open position, the election process will f
   \end{enumerate}
 \end{enumerate}
 
-\GCArticle{gc-article-8}{VIII. Graduate Student Council Responsibilities}
+\DocArticle{gc-article-8}{VIII. Graduate Student Council Responsibilities}
 
 \begin{enumerate}
 \item The Graduate Student Council shall have duties and responsibilities including, but not limited to, those listed below.
@@ -195,7 +222,7 @@ In the case of the President being an open position, the election process will f
   \end{enumerate}
 \end{enumerate}
 
-\GCArticle{gc-article-9}{IX. Amendments}
+\DocArticle{gc-article-9}{IX. Amendments}
 
 \begin{enumerate}
 \item Amendments to the Graduate Student Council Bylaws must be proposed at least one week before their adoption by the Graduate Student Council.
@@ -204,3 +231,5 @@ In the case of the President being an open position, the election process will f
   \item After adoption, the Graduate Council shall present any changes to the Student Senate in a timely manner.
   \end{enumerate}
 \end{enumerate}
+
+\end{document}
