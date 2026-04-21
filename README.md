@@ -1,101 +1,67 @@
 # GC Bylaws
 
-This repository holds the **LaTeX source and compiled PDF of the Bylaws of the
-Rensselaer Union Graduate Student Council (GC)**. It is maintained by the
-Graduate Student Council and the Student Senate so that the current, approved
-version of the document is always available as both an editable source and a
-typeset PDF.
+This repository contains the Graduate Council bylaws source for the
+`2026-04-21` branch revision.
 
-## What's in here
+The canonical LaTeX source is [`GC_Bylaws.tex`](GC_Bylaws.tex).
+It compiles to `GC_Bylaws.pdf` and uses the shared `union-doc.cls` document
+class from the nested `union-docs-latex-class` submodule.
 
-| File / folder | Purpose |
-| --- | --- |
-| `GC_Bylaws.tex` | The primary source — the full text of the Bylaws, marked up in LaTeX. Edit this to propose changes. |
-| `GC_Bylaws.pdf` | The compiled, shareable copy. Regenerated automatically on every push (see below). |
-| `union-docs-latex-class/` | Git submodule pointing at [`benavt/union-docs-latex-class`](https://github.com/benavt/union-docs-latex-class). Provides the shared `union-doc.cls` class, Union fonts, and logo assets so every Union governing document has a consistent look. |
-| `.github/workflows/compile-latex.yml` | GitHub Actions workflow that compiles the `.tex` to PDF, uploads it as a build artifact, and commits the updated `GC_Bylaws.pdf` back to the branch. |
-| `LICENSE` | License covering the contents of this repository. |
+## Repository Layout
 
-## How the document is structured
+- `GC_Bylaws.tex`: the single source file for the bylaws on this branch
+- `.github/workflows/compile-latex.yml`: GitHub Actions workflow that compiles
+  the document and uploads the PDF artifact
+- `union-docs-latex-class/`: git submodule containing the shared LaTeX class,
+  fonts, and official Union logos
 
-`GC_Bylaws.tex` uses the `union-doc` class from the submodule. The top of the
-file only configures document metadata (title, subtitle, cover logo, cover
-note, TOC depth, etc.); the body then uses a small set of class-provided
-commands — `\DocArticle`, `\DocParagraph`, and standard `enumerate`
-environments — to write the articles of the Bylaws. Current articles:
+## Getting Started
 
-1. Preamble
-2. Purpose
-3. Eligibility
-4. Membership
-5. Elections and Terms of Office
-6. Officers
-7. Meetings
-8. Graduate Student Council Responsibilities
-9. Amendments
-
-Per Article IX, amendments must be proposed at least one week before adoption
-and require a two-thirds majority of the voting membership of the Council.
-
-## Cloning
-
-Because the class files live in a submodule, clone with submodules initialized:
-
-```bash
-git clone --recurse-submodules https://github.com/benavt/GC_Bylaws.git
-```
-
-If you already cloned without submodules, run:
+After cloning the repo, initialize the submodule:
 
 ```bash
 git submodule update --init --recursive
 ```
 
-## Building locally
-
-You need a TeX distribution with **LuaLaTeX** (TeX Live 2022+ or MacTeX
-recommended), plus `latexmk`. From the repo root:
+To build the PDF locally:
 
 ```bash
 latexmk -lualatex -shell-escape GC_Bylaws.tex
 ```
 
-or, equivalently, a direct LuaLaTeX invocation run twice so the table of
-contents resolves:
+Run the build twice if you are using `lualatex` directly so the table of
+contents is fully populated.
 
-```bash
-lualatex --shell-escape GC_Bylaws.tex
-lualatex --shell-escape GC_Bylaws.tex
+## Git conventions for Union documents
+
+When you commit changes to a Union governing document, write the commit message
+so someone reviewing the history can immediately tell **what changed** and
+**which final approval date the text corresponds to**.
+
+### Recommended commit format
+
+Use this pattern:
+
+```text
+<document name>: <short description> (final approval: YYYY-MM-DD)
 ```
 
-The output is `GC_Bylaws.pdf`.
+Examples:
 
-## Automated builds
+- `Senate Bylaws: update election procedure language (final approval: 2026-04-21)`
+- `Union Constitution: incorporate approved amendment 3 (final approval: 2026-02-06)`
+- `Executive Board Rules: fix numbering and adopted wording (final approval: 2025-11-14)`
 
-Every push that touches `GC_Bylaws.tex`, the workflow, the submodule, or
-`.gitmodules` triggers `.github/workflows/compile-latex.yml`, which:
+Conventions to follow:
 
-1. Checks out the repo with submodules.
-2. Compiles `GC_Bylaws.tex` with `xu-cheng/latex-action` using LuaLaTeX and
-   the fonts bundled in the `union-docs-latex-class` submodule.
-3. Uploads the resulting PDF as a workflow artifact (`compiled-pdfs`).
-4. On `push` events, commits the updated `GC_Bylaws.pdf` back to the branch
-   so the repo always carries a current typeset copy.
+- Use the **final approval date**, not the date you happened to make the edit.
+- Write the date in **ISO format**: `YYYY-MM-DD`.
+- Keep the subject line focused on the approved change itself, not on your
+  editing process. For example, prefer `incorporate approved budget language`
+  over `make edits from meeting`.
+- If a change has **not** received final approval yet, make that explicit in
+  the commit message instead of guessing a date. For example:
+  `Senate Bylaws: draft revisions for review (pending final approval)`.
 
-The workflow can also be run manually from the Actions tab via
-**workflow_dispatch**.
-
-## Proposing changes
-
-1. Open a branch and edit `GC_Bylaws.tex`.
-2. Verify the document still compiles locally (or rely on the CI build).
-3. Open a pull request. The CI workflow will compile the PDF and attach it
-   as an artifact so reviewers can read the rendered result.
-4. Once the amendment is adopted by the Council (and, where required,
-   presented to the Student Senate), merge the PR so the committed PDF
-   reflects the newly adopted text.
-
-## Questions
-
-For questions about the Bylaws themselves, email
-[grad-council@rpi.edu](mailto:grad-council@rpi.edu).
+This convention makes it much easier to audit the repository later against
+minutes, ratification records, and released PDFs.
